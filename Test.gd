@@ -1,6 +1,6 @@
 extends Sprite2D
 const lines: Array[String] = [
-	"Yo.",
+	"Yo. What are you doing today? What?",
 	"hi?",
 	"Wait."
 ]

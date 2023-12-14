@@ -17,8 +17,6 @@ signal finished_displaying()
 func display_text(text_to_display: String):
 	text = text_to_display
 	label.text = text_to_display
-	size.x = MAX_WIDTH
-	"""
 	await resized
 	custom_minimum_size.x = min(size.x, MAX_WIDTH)
 	if size.x > MAX_WIDTH:
@@ -29,7 +27,7 @@ func display_text(text_to_display: String):
 		
 	global_position.x -= size.x/2
 	global_position.y -= size.y+24
-	"""
+
 	label.text = ""
 	_display_letter()
 
