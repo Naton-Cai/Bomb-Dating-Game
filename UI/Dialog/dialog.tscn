@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkey7hwe3fsds"]
+
+[ext_resource type="Texture2D" uid="uid://d2em0sm3lo6hj" path="res://UI/Dialog/Dialogbox.png" id="1_f2qpm"]
+[ext_resource type="FontFile" uid="uid://cacufwcmxolw7" path="res://UI/Font/PressStart2P-Regular.ttf" id="2_eqom7"]
+
+[node name="Control" type="Node2D"]
+position = Vector2(576, 639.7)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -240.0
+offset_right = 375.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_f2qpm")
+
+[node name="HeaderContainer" type="MarginContainer" parent="TextureRect"]
+offset_right = 624.0
+offset_bottom = 32.0
+scale = Vector2(1.2, 1.2)
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Header" type="Label" parent="TextureRect/HeaderContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.670588, 0.670588, 0.670588, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_eqom7")
+text = "You: What should I ask her?"
+vertical_alignment = 1
+
+[node name="Entry1" type="MarginContainer" parent="TextureRect"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 37.0
+offset_right = 742.0
+offset_bottom = 69.0001
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Header" type="Label" parent="TextureRect/Entry1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.670588, 0.670588, 0.670588, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_eqom7")
+text = "You: What should I ask her?"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 30.0
+offset_right = 742.0
+offset_bottom = 33.0
+color = Color(0, 0, 0, 1)
+
+[node name="Entry2" type="MarginContainer" parent="TextureRect"]
+offset_left = 8.0
+offset_top = 69.0
+offset_right = 742.0
+offset_bottom = 101.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Header" type="Label" parent="TextureRect/Entry2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.670588, 0.670588, 0.670588, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_eqom7")
+text = "You: What should I ask her?"
+vertical_alignment = 1
+
+[node name="Entry3" type="MarginContainer" parent="TextureRect"]
+offset_left = 8.0
+offset_top = 101.0
+offset_right = 742.0
+offset_bottom = 133.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Header" type="Label" parent="TextureRect/Entry3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.670588, 0.670588, 0.670588, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_eqom7")
+text = "You: What should I ask her?"
+vertical_alignment = 1
+
+[node name="Entry4" type="MarginContainer" parent="TextureRect"]
+offset_left = 8.0
+offset_top = 133.0
+offset_right = 742.0
+offset_bottom = 165.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Header" type="Label" parent="TextureRect/Entry4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.670588, 0.670588, 0.670588, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_eqom7")
+text = "You: What should I ask her?"
+vertical_alignment = 1
