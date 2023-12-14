@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7xkdg718y47j"]
+
+[ext_resource type="PackedScene" uid="uid://dkey7hwe3fsds" path="res://UI/Dialog/dialog.tscn" id="1_g5ci3"]
+
+[node name="Dating Scene" type="Node2D"]
+
+[node name="Control" parent="." instance=ExtResource("1_g5ci3")]

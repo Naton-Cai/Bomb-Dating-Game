@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dy7wlue6gsv5v"]
+
+[ext_resource type="FontFile" uid="uid://cacufwcmxolw7" path="res://UI/Font/PressStart2P-Regular.ttf" id="1_4oces"]
+
+[resource]
+default_font = ExtResource("1_4oces")
+default_font_size = 0
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.415686, 0.415686, 0.415686, 1)
+Button/colors/font_hover_color = Color(0.431373, 0.431373, 0.431373, 1)
+Button/constants/outline_size = 7

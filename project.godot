@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bomb-dating-game"
-run/main_scene="res://dating_scene.tscn"
+run/main_scene="res://UI/Textbox/dating_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
