@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://c7xkdg718y47j"]
+[gd_scene load_steps=2 format=3 uid="uid://c7xkdg718y47j"]
+
+[ext_resource type="Texture2D" uid="uid://bu5jo4rneqkvb" path="res://icon.svg" id="1_bk0bw"]
 
 [node name="Dating Scene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(469, 412)
+scale = Vector2(5, 5)
+texture = ExtResource("1_bk0bw")
