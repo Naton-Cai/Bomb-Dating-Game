@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkey7hwe3fsds"]
+[gd_scene load_steps=5 format=3 uid="uid://dkey7hwe3fsds"]
 
+[ext_resource type="Script" path="res://UI/Dialog/dialog.gd" id="1_44bpe"]
 [ext_resource type="Texture2D" uid="uid://d2em0sm3lo6hj" path="res://UI/Dialog/Dialogbox.png" id="1_f2qpm"]
 [ext_resource type="FontFile" uid="uid://cacufwcmxolw7" path="res://UI/Font/PressStart2P-Regular.ttf" id="2_eqom7"]
 [ext_resource type="Theme" uid="uid://dy7wlue6gsv5v" path="res://UI/Font/font.tres" id="3_0gfmr"]
 
 [node name="Control" type="Node2D"]
 position = Vector2(576, 639.7)
+script = ExtResource("1_44bpe")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 7
@@ -36,7 +38,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.670588, 0.670588, 0.670588, 1)
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("2_eqom7")
-text = "You: What should I ask her?"
 vertical_alignment = 1
 
 [node name="Entry1" type="MarginContainer" parent="TextureRect"]
@@ -54,31 +55,27 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Entry1"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TextureRect/Entry1/VBoxContainer"]
+[node name="Button1" type="Button" parent="TextureRect/Entry1/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_0gfmr")
-text = "sdsdsdsdsd"
 flat = true
 alignment = 0
 
 [node name="Button2" type="Button" parent="TextureRect/Entry1/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_0gfmr")
-text = "sdsdsdsdsd"
 flat = true
 alignment = 0
 
 [node name="Button3" type="Button" parent="TextureRect/Entry1/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_0gfmr")
-text = "sdsdsd"
 flat = true
 alignment = 0
 
 [node name="Button4" type="Button" parent="TextureRect/Entry1/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_0gfmr")
-text = "sdsdsdsds"
 flat = true
 alignment = 0
 
@@ -89,3 +86,11 @@ offset_top = 30.0
 offset_right = 742.0
 offset_bottom = 33.0
 color = Color(0, 0, 0, 1)
+
+[node name="DisplayTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="TextureRect/Entry1/VBoxContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="TextureRect/Entry1/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="TextureRect/Entry1/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="TextureRect/Entry1/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]
