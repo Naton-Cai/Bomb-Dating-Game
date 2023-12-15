@@ -18,3 +18,4 @@ func clear_dialog():
 func _spawn_dialog_box():
 	dialog_box = dialog_box_scene.instantiate()
 	get_tree().root.add_child(dialog_box)
+	return dialog_box

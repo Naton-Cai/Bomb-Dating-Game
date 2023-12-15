@@ -14,6 +14,7 @@ var isEmpty = true
 
 signal finished_displaying()
 
+#disables all the buttons
 func disable_buttons():
 	timer.stop()
 	clear_text()
@@ -22,12 +23,14 @@ func disable_buttons():
 	button3.disabled = true
 	button4.disabled = true
 
+#enables them for use
 func enable_buttons():
 	button1.disabled = false
 	button2.disabled = false
 	button3.disabled = false
 	button4.disabled = false
 
+#clears away the text
 func clear_text():
 	isEmpty = true
 	headerlabel.text = ""
@@ -36,6 +39,10 @@ func clear_text():
 	button3.text = ""
 	button4.text = ""
 
+#called by DialogManager to display the provided strings
+#strings are represented in an array of size 5
+#0 being the header
+#1-5 being the buttons text
 func display_dialog(text_to_display: Array[String]):
 	text = text_to_display
 	if len(text) == 5 and isEmpty == true:
@@ -45,7 +52,7 @@ func display_dialog(text_to_display: Array[String]):
 		_display_letter()
 		isEmpty = false
 	
-
+#function that displays each string letter by letter
 func _display_letter():
 	if letter_index >= max_length or len(text) < 5:
 		return
