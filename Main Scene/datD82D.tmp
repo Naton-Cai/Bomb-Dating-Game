@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7xkdg718y47j"]
+
+[ext_resource type="Script" path="res://Main Scene/dating_scene.gd" id="1_mqi6d"]
+[ext_resource type="Texture2D" uid="uid://c2tgy4mju56wd" path="res://Assets/BaseBombLipClosed.png" id="2_txi0k"]
+[ext_resource type="Script" path="res://Test.gd" id="3_web16"]
+[ext_resource type="Script" path="res://Main Scene/Shading.gd" id="4_xm566"]
+[ext_resource type="Theme" uid="uid://dy7wlue6gsv5v" path="res://UI/Font/font.tres" id="5_62unr"]
+[ext_resource type="Script" path="res://UI/Health_bar/Fuse_Health_Bar.gd" id="6_n113x"]
+[ext_resource type="Script" path="res://Main Scene/ProgressBar.gd" id="7_t3utn"]
+
+[node name="Dating_Scene" type="Node2D"]
+script = ExtResource("1_mqi6d")
+
+[node name="Bomb" type="Sprite2D" parent="."]
+position = Vector2(575.25, 272)
+scale = Vector2(0.48619, 0.5)
+texture = ExtResource("2_txi0k")
+script = ExtResource("3_web16")
+
+[node name="Shading" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+offset_right = 1161.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 0.627451)
+script = ExtResource("4_xm566")
+
+[node name="Label" type="Label" parent="Shading"]
+layout_mode = 0
+offset_left = 336.0
+offset_right = 387.0
+offset_bottom = 65.0
+scale = Vector2(10, 10)
+theme = ExtResource("5_62unr")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Timer" parent="Shading"]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="round_end" type="Timer" parent="."]
+one_shot = true
+
+[node name="Game_Fuse_Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = 64.0
+offset_top = 40.0
+offset_right = 1088.0
+offset_bottom = 80.0
+max_value = 200.0
+value = 200.0
+script = ExtResource("6_n113x")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 960.0
+offset_bottom = 91.0
+max_value = 200.0
+value = 200.0
+rounded = true
+script = ExtResource("7_t3utn")
+
+[connection signal="timeout" from="Shading/Start" to="." method="_on_start_timeout"]
+[connection signal="timeout" from="Shading/Start" to="Shading" method="_on_start_timeout"]
+[connection signal="timeout" from="round_end" to="." method="_on_round_end_timeout"]
+[connection signal="timeout" from="Game_Fuse_Timer" to="." method="_on_game_fuse__timer_timeout"]

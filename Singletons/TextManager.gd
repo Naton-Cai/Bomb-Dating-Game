@@ -30,7 +30,9 @@ func _show_text_box():
 	
 func _on_text_box_finished_displaying():
 	can_advance_line = true
-	
+
+#moves on to the next box
+"""
 func _unhandled_input(event):
 	if(
 		event.is_action_pressed("advance_dialog") &&
@@ -46,6 +48,12 @@ func _unhandled_input(event):
 			return
 		
 		_show_text_box()
+"""
+
+func clear_text():
+	if is_text_active:
+		text_box.queue_free()
+	is_text_active = false
 	
 	
 	

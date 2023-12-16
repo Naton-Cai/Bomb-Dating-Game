@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7xkdg718y47j"]
+
+[ext_resource type="Script" path="res://UI/Textbox/dating_scene.gd" id="1_fxmbs"]
+[ext_resource type="Texture2D" uid="uid://c2tgy4mju56wd" path="res://Assets/BaseBombLipClosed.png" id="2_q6q5c"]
+[ext_resource type="Script" path="res://Test.gd" id="3_47ne1"]
+[ext_resource type="Script" path="res://UI/Textbox/Shading.gd" id="4_fhw4p"]
+[ext_resource type="Theme" uid="uid://dy7wlue6gsv5v" path="res://UI/Font/font.tres" id="5_vqbe2"]
+
+[node name="Dating Scene" type="Node2D"]
+script = ExtResource("1_fxmbs")
+
+[node name="Bomb" type="Sprite2D" parent="."]
+position = Vector2(574, 272)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_q6q5c")
+script = ExtResource("3_47ne1")
+
+[node name="Shading" type="ColorRect" parent="."]
+z_index = 1
+offset_right = 1161.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 0.627451)
+script = ExtResource("4_fhw4p")
+
+[node name="Label" type="Label" parent="Shading"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 384.0
+theme = ExtResource("5_vqbe2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Timer" parent="Shading"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Shading/Start" to="." method="_on_start_timeout"]
+[connection signal="timeout" from="Shading/Start" to="Shading" method="_on_start_timeout"]
