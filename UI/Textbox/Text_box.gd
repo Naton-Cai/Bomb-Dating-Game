@@ -24,10 +24,11 @@ func display_text(text_to_display: String):
 		await resized #wait for x to resize
 		await resized #wait for y to resize
 		custom_minimum_size.y = size.y
-		
-	global_position.x -= size.x/2
-	global_position.y -= size.y+80
-
+	
+	#use size.x/2 to center
+	global_position.x -= -50
+	global_position.y -= size.y+20
+	
 	label.text = ""
 	_display_letter()
 

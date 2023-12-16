@@ -1,0 +1,277 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7xkdg718y47j"]
+
+[ext_resource type="Texture2D" uid="uid://c2tgy4mju56wd" path="res://Assets/BaseBombLipClosed.png" id="2_qu584"]
+[ext_resource type="Script" path="res://Test.gd" id="3_kalhs"]
+[ext_resource type="Script" path="res://Scene/Date Scene/Shading.gd" id="4_lhk8f"]
+[ext_resource type="Theme" uid="uid://dy7wlue6gsv5v" path="res://UI/Font/font.tres" id="5_48xbn"]
+[ext_resource type="Script" path="res://UI/Health_bar/Fuse_Health_Bar.gd" id="6_fhqux"]
+[ext_resource type="Script" path="res://Scene/Date Scene/ProgressBar.gd" id="7_xtpar"]
+
+[sub_resource type="GDScript" id="GDScript_r6vsr"]
+script/source = "extends Node2D
+@onready var Bomb = $Bomb
+@onready var round_end_timer = $round_end
+@onready var Game_end_timer = $Game_Fuse_Timer
+@onready var update_timer = $update
+@onready var fuse_health = $ProgressBar
+@onready var score = $Score
+var response: Array[String] = []
+var question: Array[String] = []
+var reaction: Array[String] = []
+
+var flag = false
+var dialog_ui
+var button1
+var button2
+var button3
+var button4
+
+var Active_Passive = 0
+var Emotional_Logical = 0
+var Extroverted_Introverted = 0
+var Postive_Negative = 0
+
+var Engagement = 100
+var Romantic = 100
+var Comfort = 100
+var Happiness = 100
+
+var round_counter = 0
+var game_time = 60
+
+#personality will be randomly determined from -100 to 100
+func generate_personality():
+	Active_Passive = randi_range( -100, 100)
+	Emotional_Logical = randi_range( -100, 100)
+	Extroverted_Introverted = randi_range( -100, 100)
+	Postive_Negative = randi_range( -100, 100)
+
+#generates the questions
+func generate_question():
+	question = [\"what do you like?\"]
+	
+	
+func generate_response(q:String):
+	#every 4 rounds you get to ask a question
+	if round_counter%4 == 0:
+		response = [
+		\"What would you like to ask?\",
+		\"Option 1\",
+		\"Option 2\",
+		\"Option 3\",
+		\"Option 4\",
+		]
+	else:	
+		response = [
+		\"What would you like to say?\",
+		\"Option 1\",
+		\"Option 2\",
+		\"Option 3\",
+		\"Option 4\",
+		]
+
+
+func generate_reaction(r: String, answered: int):
+	var array = [\"I like that\", \"I don't like that\", \"I love that\", \"I hate that\"]
+	reaction = [str(array[answered])]
+	#calls the TextManager to display the textbox aboxe the bomb
+	TextManager.start_text(Bomb.global_position, reaction)
+	
+	
+#generates each round
+func generate_round():
+	
+	generate_question()
+	generate_response(question[0])
+	#spawns in the dialog menu, it returns the object so we can use it later
+	#starts displaying the dialog listed
+	DialogManager.start_dialog(response)
+	
+	#calls the TextManager to display the textbox aboxe the bomb
+	TextManager.start_text(Bomb.global_position, question)
+	
+	#get each button from the dialog window UI
+	button1 = dialog_ui.get_node(\"TextureRect/Entry1/VBoxContainer/Button1\")
+	button2 = dialog_ui.get_node(\"TextureRect/Entry1/VBoxContainer/Button2\")
+	button3 = dialog_ui.get_node(\"TextureRect/Entry1/VBoxContainer/Button3\")
+	button4 = dialog_ui.get_node(\"TextureRect/Entry1/VBoxContainer/Button4\")
+	
+	#connect each button to it's corosponding signal
+	button1.pressed.connect(self._on_button_1_pressed)
+	button2.pressed.connect(self._on_button_2_pressed)
+	button3.pressed.connect(self._on_button_3_pressed)
+	button4.pressed.connect(self._on_button_4_pressed)
+
+
+#calcuates the drain effect on each emotional bar
+func calculate_drain():
+	var time_deducted = 0
+	if Engagement > 0:
+		Engagement = max(0, Engagement-10)
+	else:
+		time_deducted += 1
+	if Romantic > 0:	
+		Romantic = max(0, Romantic-10)
+	else:
+		time_deducted += 1
+	if Comfort > 0:	
+		Comfort = max(0, Comfort-10)
+	else:
+		time_deducted += 1
+	if Happiness > 0:	
+		Happiness = max(0, Happiness-10)
+	else:
+		time_deducted += 1
+	Game_end_timer.wait_time = max(Game_end_timer.time_left-time_deducted, 1)
+	if !Game_end_timer.is_stopped() and Game_end_timer.wait_time >= 1:
+		Game_end_timer.start()
+
+
+func _on_button_1_pressed():
+	print(\"button1\")
+	DialogManager.clear_dialog()
+	TextManager.clear_text()
+	generate_reaction(response[1],0)
+	round_end_timer.start(1)
+	round_counter += 1
+	score.text = \"Score: \"+str(round_counter)
+
+
+func _on_button_2_pressed():
+	print(\"button2\")
+	DialogManager.clear_dialog()
+	TextManager.clear_text()
+	generate_reaction(response[2],1)
+	round_end_timer.start(1)
+	round_counter += 1
+	score.text = \"Score: \"+str(round_counter)
+
+func _on_button_3_pressed():
+	print(\"button3\")
+	DialogManager.clear_dialog()
+	TextManager.clear_text()
+	generate_reaction(response[3],2)
+	round_end_timer.start(1)
+	round_counter += 1
+	score.text = \"Score: \"+str(round_counter)
+
+func _on_button_4_pressed():
+	print(\"button4\")
+	DialogManager.clear_dialog()
+	TextManager.clear_text()
+	generate_reaction(response[4],3)
+	round_end_timer.start(1)
+	round_counter += 1
+	score.text = \"Score: \"+str(round_counter)
+
+#the end of this timer starts the game
+func _on_start_timeout():
+	score.text = \"Score: \"+str(round_counter)
+	generate_personality()
+	dialog_ui = DialogManager._spawn_dialog_box()
+	generate_round()
+	Game_end_timer.start()
+	update_timer.start()	
+	
+#the end of this timer represents a new round
+func _on_round_end_timeout():
+	DialogManager.clear_dialog()
+	TextManager.clear_text()
+	generate_round()
+
+#this timer repesents the end of the game
+func _on_game_fuse__timer_timeout():
+	fuse_health.set_health(Game_end_timer.time_left,20)
+	print(\"GAME OVER\")
+	DialogManager.clear_box()
+	TextManager.clear_text()
+	update_timer.stop()
+	round_end_timer.stop()
+
+func _on_update_timeout():
+	calculate_drain()
+	fuse_health.set_health(Game_end_timer.time_left,20)
+	game_time = Game_end_timer.time_left
+	print(Engagement, Romantic, Comfort, Happiness)
+"
+
+[node name="Dating_Scene" type="Node2D"]
+script = SubResource("GDScript_r6vsr")
+
+[node name="Bomb" type="Sprite2D" parent="."]
+position = Vector2(575.25, 272)
+scale = Vector2(0.48619, 0.5)
+texture = ExtResource("2_qu584")
+script = ExtResource("3_kalhs")
+
+[node name="Shading" type="ColorRect" parent="."]
+z_index = 1
+offset_right = 1161.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 0.627451)
+script = ExtResource("4_lhk8f")
+
+[node name="Label" type="Label" parent="Shading"]
+layout_mode = 0
+offset_left = 336.0
+offset_right = 387.0
+offset_bottom = 65.0
+scale = Vector2(10, 10)
+theme = ExtResource("5_48xbn")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Timer" parent="Shading"]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="round_end" type="Timer" parent="."]
+one_shot = true
+
+[node name="Game_Fuse_Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = 64.0
+offset_top = 40.0
+offset_right = 1088.0
+offset_bottom = 80.0
+max_value = 200.0
+value = 200.0
+script = ExtResource("6_fhqux")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 192.0
+offset_top = 32.0
+offset_right = 960.0
+offset_bottom = 59.0
+max_value = 60.0
+value = 60.0
+rounded = true
+script = ExtResource("7_xtpar")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 968.0
+offset_top = 128.0
+offset_right = 1152.0
+offset_bottom = 192.0
+theme = ExtResource("5_48xbn")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="update" type="Timer" parent="."]
+
+[connection signal="timeout" from="Shading/Start" to="." method="_on_start_timeout"]
+[connection signal="timeout" from="Shading/Start" to="Shading" method="_on_start_timeout"]
+[connection signal="timeout" from="round_end" to="." method="_on_round_end_timeout"]
+[connection signal="timeout" from="Game_Fuse_Timer" to="." method="_on_game_fuse__timer_timeout"]
+[connection signal="timeout" from="update" to="." method="_on_update_timeout"]

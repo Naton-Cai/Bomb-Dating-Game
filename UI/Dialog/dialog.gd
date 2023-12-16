@@ -17,7 +17,6 @@ signal finished_displaying()
 #disables all the buttons
 func disable_buttons():
 	timer.stop()
-	clear_text()
 	button1.disabled = true
 	button2.disabled = true
 	button3.disabled = true
@@ -38,6 +37,7 @@ func clear_text():
 	button2.text = ""
 	button3.text = ""
 	button4.text = ""
+	
 
 #called by DialogManager to display the provided strings
 #strings are represented in an array of size 5
