@@ -36,11 +36,13 @@ func generate_personality():
 	Extroverted_Introverted = randi_range( -100, 100)
 	Postive_Negative = randi_range( -100, 100)
 
-
+#generates the questions
 func generate_question():
 	question = ["what do you like?"]
 	
+	
 func generate_response(q:String):
+	#every 4 rounds you get to ask a question
 	if round_counter%4 == 0:
 		response = [
 		"What would you like to ask?",
@@ -57,6 +59,7 @@ func generate_response(q:String):
 		"Option 3",
 		"Option 4",
 		]
+
 
 func generate_reaction(r: String, answered: int):
 	var array = ["I like that", "I don't like that", "I love that", "I hate that"]
@@ -92,6 +95,31 @@ func generate_round():
 	button3.pressed.connect(self._on_button_3_pressed)
 	button4.pressed.connect(self._on_button_4_pressed)
 
+
+#calcuates the drain effect on each emotional bar
+func calculate_drain():
+	var time_deducted = 0
+	if Engagement > 0:
+		Engagement = max(0, Engagement-10)
+	else:
+		time_deducted += 1
+	if Romantic > 0:	
+		Romantic = max(0, Romantic-10)
+	else:
+		time_deducted += 1
+	if Comfort > 0:	
+		Comfort = max(0, Comfort-10)
+	else:
+		time_deducted += 1
+	if Happiness > 0:	
+		Happiness = max(0, Happiness-10)
+	else:
+		time_deducted += 1
+	Game_end_timer.wait_time = max(Game_end_timer.time_left-time_deducted, 1)
+	if !Game_end_timer.is_stopped() and Game_end_timer.wait_time >= 1:
+		Game_end_timer.start()
+
+
 func _on_button_1_pressed():
 	print("button1")
 	DialogManager.clear_dialog()
@@ -123,12 +151,14 @@ func _on_button_4_pressed():
 	generate_reaction(response[4],3)
 	round_end_timer.start(1)
 
+
 #the end of this timer starts the game
 func _on_start_timeout():
 	generate_personality()
 	generate_round()
 	Game_end_timer.start()
 	update_timer.start()
+	
 	
 #the end of this timer represents a new round
 func _on_round_end_timeout():
@@ -139,13 +169,13 @@ func _on_round_end_timeout():
 #this timer repesents the end of the game
 func _on_game_fuse__timer_timeout():
 	print("GAME OVER")
+	fuse_health.set_health(Game_end_timer.time_left,20)
+	update_timer.stop()
+	round_end_timer.stop()
 	pass # Replace with function body.
 
 func _on_update_timeout():
+	calculate_drain()
 	fuse_health.set_health(Game_end_timer.time_left,20)
 	game_time = Game_end_timer.time_left
-	Engagement -= 10
-	Romantic -= 10
-	Comfort -= 10
-	Happiness -= 10
 	print(Engagement, Romantic, Comfort, Happiness)
