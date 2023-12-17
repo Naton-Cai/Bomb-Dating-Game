@@ -1,0 +1,16 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://ds06eepfjcvag"]
+
+[ext_resource type="Texture2D" uid="uid://13qjp2grtgqo" path="res://Assets/fire1.png" id="1_xvs53"]
+[ext_resource type="Texture2D" uid="uid://cfx5tsxs0dvc6" path="res://Assets/fire2.png" id="2_v8gnv"]
+[ext_resource type="Texture2D" uid="uid://6t83kpr1xx00" path="res://Assets/fire4.png" id="3_s7x0m"]
+[ext_resource type="Texture2D" uid="uid://d15wgnn67e6uq" path="res://Assets/fire3.png" id="4_fgb7i"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_xvs53")
+frame_1/texture = ExtResource("2_v8gnv")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_s7x0m")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_fgb7i")
+frame_3/duration = 1.0
