@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://p86tv4qksnnh"]
+
+[ext_resource type="Texture2D" uid="uid://i2xjj7jq7lh4" path="res://Assets/rope.png" id="1_q1vbg"]
+[ext_resource type="Script" path="res://UI/Health_bar/Health_Bar.gd" id="2_icrfn"]
+[ext_resource type="PackedScene" uid="uid://qyot1mmfd7bu" path="res://Assets/Fire Particle/fire.tscn" id="3_jhdjv"]
+[ext_resource type="Material" uid="uid://cgq01bsqio5j4" path="res://Assets/Fuse/fuse_fire.tres" id="4_ri3uk"]
+[ext_resource type="Texture2D" uid="uid://cgpdlnyn1lt1l" path="res://Assets/bomb.png" id="5_4s74y"]
+
+[node name="Fuse" type="TextureProgressBar"]
+offset_right = 1687.0
+offset_bottom = 48.0
+scale = Vector2(1.01, 1.01)
+max_value = 60.0
+value = 60.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_q1vbg")
+script = ExtResource("2_icrfn")
+metadata/_edit_group_ = true
+
+[node name="Fire" parent="." instance=ExtResource("3_jhdjv")]
+position = Vector2(1679.25, 22.6415)
+process_material = ExtResource("4_ri3uk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -95.0495
+offset_top = -23.7624
+offset_right = 0.950493
+offset_bottom = 72.2376
+texture = ExtResource("5_4s74y")

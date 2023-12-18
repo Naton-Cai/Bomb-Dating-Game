@@ -1,0 +1,27 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://cuir2065jpp28"]
+
+[sub_resource type="Gradient" id="Gradient_uhf2u"]
+offsets = PackedFloat32Array(0, 0.47541, 1)
+colors = PackedColorArray(1, 0.75, 0, 1, 1, 0.5, 0, 1, 1, 0.109804, 0.109804, 0.568627)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a0832"]
+gradient = SubResource("Gradient_uhf2u")
+
+[sub_resource type="Curve" id="Curve_ukb4d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s6d4o"]
+curve = SubResource("Curve_ukb4d")
+
+[resource]
+lifetime_randomness = 0.02
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+spread = 32.865
+gravity = Vector3(0, -600, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_s6d4o")
+color_ramp = SubResource("GradientTexture1D_a0832")
+turbulence_enabled = true
+turbulence_noise_scale = 8.526

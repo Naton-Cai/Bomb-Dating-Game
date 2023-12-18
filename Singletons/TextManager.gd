@@ -23,7 +23,7 @@ func start_text(position: Vector2, lines: Array[String]):
 func _show_text_box():
 	text_box = text_box_scene.instantiate()
 	text_box.finished_displaying.connect(_on_text_box_finished_displaying)
-	get_tree().root.add_child(text_box)
+	get_tree().root.get_node("Main/UI").add_child(text_box)
 	text_box.global_position = text_box_position
 	text_box.display_text(text_lines[current_line_index])
 	can_advance_line = false
