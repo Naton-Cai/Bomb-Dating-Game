@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj3vwisehn4ea"]
+[gd_scene load_steps=3 format=3 uid="uid://cj3vwisehn4ea"]
 
 [ext_resource type="Script" path="res://Scene/Main.gd" id="1_6kvi5"]
+
+[sub_resource type="Environment" id="Environment_wnb15"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
+glow_levels/6 = 1.0
+glow_levels/7 = 1.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6kvi5")
@@ -8,5 +18,10 @@ script = ExtResource("1_6kvi5")
 [node name="EndTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wnb15")
 
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

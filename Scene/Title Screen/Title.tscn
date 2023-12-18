@@ -3,8 +3,17 @@
 [node name="Title" type="Node2D"]
 
 [node name="Start_Game" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 256.0
-offset_right = 640.0
-offset_bottom = 320.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 938.015
+offset_top = 561.93
+offset_right = 984.015
+offset_bottom = 592.93
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(23.055, 15.005)
 text = "Start"

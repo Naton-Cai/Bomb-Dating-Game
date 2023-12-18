@@ -22,6 +22,6 @@ func clear_box():
 	
 func _spawn_dialog_box():
 	dialog_box = dialog_box_scene.instantiate()
-	get_tree().root.add_child(dialog_box)
+	get_tree().root.get_node("Main/UI").add_child(dialog_box)
 	is_dialog_active = true
 	return dialog_box
