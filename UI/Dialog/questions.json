@@ -1,0 +1,213 @@
+[
+	{
+		"question": "Why are you so late?",
+		"answers": [
+			{
+				"response": "The basketball practice was longer than expected.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I saw a lost kid and was getting them to the police station.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I was robbed. My bike was stolen. Oh well, at least I didn’t get hurt.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "*Shyly. Sorry… I was too nervous to leave the house…",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+	{
+		"question": "You don't look well. Are you sick or something?",
+		"answers": [
+			{
+				"response": "I ate a bit too much for lunch. It seems, but it was enough calories for me for today.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I see you don’t order that much either.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "The more food, the more chewing.",
+				"weight":[0,0,0,0]
+			},
+			{
+				"response": "Haha… It’s embarrassing. I’m trying to lose weight.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+	{
+		"question": "How was your work today?",
+			"answers": [
+			{
+				"response": "Very little. The boss didn’t assign me much task today.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I made a mistake today. I hope the customer doesn’t get angry and complain to my boss.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I was stuck with a hard problem, but I think I’ll solve it tomorrow.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I interviewed some candidates for the company. It was a lot of fun talking to them.",
+				"weight": [0,0,0,0]
+			}
+		]
+		
+	},
+		{
+		"question": "How are you?",
+			"answers": [
+			{
+				"response": "Couldn’t be better.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Enough energy to run a mile.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Good. I think I had enough sleep last night.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Just want to stay home.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+		{
+		"question": "Do you like music?",
+			"answers": [
+			{
+				"response": "Yes, it makes me feel all kinds of emotions.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Yes, listening to it on headphone makes me comfortable.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Yes, edm is the best to work out.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "No, listening to music always makes me sad.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+		{
+		"question": "So what do you like to do when you are free?",
+			"answers": [
+			{
+				"response": "I like to go hiking.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I listen to songs and play instruments. Music helps me relax and calm.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I like to read and play games.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Nothing, why do anything extra when we’ll all die anyway.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+		{
+		"question": "What kind of movies do you like?",
+				"answers": [
+			{
+				"response": "Action! Explosions and fight scenes always make me hype.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Romance and historical. Watching characters interacting is interesting to me.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Not a genre but something soft and timid. Nice music is also a plus.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Horror, for the thrills. Also seeing how characters fight to survive is motivating.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+		{
+		"question": "Do you hang hangout with friends often?",
+				"answers": [
+			{
+				"response": "Yeah, I usually just follow whatever they wanted to do that day.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Yeah, hanging out with my friends and share stuff with each other is healthy.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "… I don’t have friends…",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "No relationship last forever, so I don’t see a need for friends.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+		{
+		"question": "Do you like to travel?",
+				"answers": [
+			{
+				"response": "Yes! I always plan out a place or two every year to visit.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Yes. Experiencing and learning other cultures help making my thinking diverse.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Of course! Traveling is a must for a free spirit!",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "Not really. You can watch everything on the internet, so I think traveling is a waste of money, to be honest.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+		{
+		"question": "What do you do when you talk with a stranger?",
+				"answers": [
+			{
+				"response": "I keep quiet and mostly listen.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I observed them carefully and choose my words accordingly.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I tried to keep the energy high. Ask them questions about themselves always work.",
+				"weight": [0,0,0,0]
+			},
+			{
+				"response": "I tried to end the conversation and get away as quick as possible.",
+				"weight": [0,0,0,0]
+			}
+		]
+	},
+]
