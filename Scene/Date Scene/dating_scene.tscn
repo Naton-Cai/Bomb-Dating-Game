@@ -422,13 +422,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 6
 text = "Happiness"
 
-[node name="Light" type="PointLight2D" parent="."]
-position = Vector2(376.471, 42.3529)
-scale = Vector2(3.765, 3.765)
-texture = ExtResource("9_krnnp")
-
 [node name="candle" type="TextureRect" parent="."]
-z_index = 4
 offset_left = 536.471
 offset_top = 381.176
 offset_right = 614.471
@@ -441,6 +435,11 @@ position = Vector2(37.6471, 37.647)
 scale = Vector2(0.49, 0.49)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_omnk7")
+
+[node name="Light" type="PointLight2D" parent="candle"]
+position = Vector2(-160, -338.823)
+scale = Vector2(3.765, 3.765)
+texture = ExtResource("9_krnnp")
 
 [connection signal="timeout" from="Shading/Start" to="." method="_on_start_timeout"]
 [connection signal="timeout" from="Shading/Start" to="Shading" method="_on_start_timeout"]
