@@ -14,8 +14,8 @@
 			},
 			{
 				"response": "My bike was stolen. Oh well, at least I didn’t get hurt.
-				[Passive/Postive]",
-				"weight": [0,-1,0,2]
+				[Passive/Positive]",
+				"weight": [-1,0,0,2]
 			},
 			{
 				"response": "*Shyly. Sorry… I was too nervous to leave the house…
@@ -64,7 +64,7 @@
 			},
 			{
 				"response": "I was stuck with a hard problem, but I’ll solve it tomorrow.
-				[Active/Posotive]",
+				[Active/Positive]",
 				"weight": [2,0,0,2]
 			},
 			{
@@ -166,7 +166,7 @@
 			{
 				"response": "I like being with people, I get sad when I'm alone.
 				[Extroverted/Negative]",
-				"weight": [0,0,1,2]
+				"weight": [0,0,1,-2]
 			},
 			{
 				"response": "I am doing charity on the weekends. It makes me happy.

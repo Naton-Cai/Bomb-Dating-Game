@@ -40,7 +40,7 @@ func _on_Start_game_pressed():
 	self.add_sibling(music)	
 	
 func _on_game_fuse__timer_timeout():
-	end_score = Date_screen.round_counter
+	end_score = Date_screen.score_counter
 	#calls the end timer/ this was added to wait for a potential cutscene
 	EndTimer.start(1)
 	print(end_score)
