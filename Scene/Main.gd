@@ -3,6 +3,11 @@ extends Node2D
 @onready var Date = preload("res://Scene/Date Scene/dating_scene.tscn")
 @onready var End = preload("res://Scene/End Screen/end.tscn")
 @onready var EndTimer = $EndTimer
+
+@onready var sfx = preload("res://SFX/audio.tscn")
+@onready var audio_music = preload("res://SFX/Jazz Brunch.wav")
+
+
 var Title_screen
 var Date_screen
 var End_screen
@@ -27,6 +32,12 @@ func _on_Start_game_pressed():
 	self.add_child(Date_screen)
 	end_timer = Date_screen.get_node("Game_Fuse_Timer")
 	end_timer.timeout.connect(self._on_game_fuse__timer_timeout)
+	
+	var music = sfx.instantiate() as AudioStreamPlayer2D
+	var audio = audio_music
+	music.stream = audio
+	music.global_position = self.global_position
+	self.add_sibling(music)	
 	
 func _on_game_fuse__timer_timeout():
 	end_score = Date_screen.round_counter

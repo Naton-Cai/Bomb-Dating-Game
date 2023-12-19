@@ -194,24 +194,24 @@ func generate_round():
 func calculate_drain(eng, rom, com, hap):
 	var time_deducted = 0
 	if Engagement <= 0 and eng < 0:
-		time_deducted -= eng/10
+		time_deducted -= eng/5
 	Engagement = max(0, Engagement+eng)
 	EngageBar.set_health(Engagement,20)
 		
 	if Romantic <= 0 and rom < 0:	
-		time_deducted -= rom/10
+		time_deducted -= rom/5
 	Romantic = max(0, Romantic+rom)
 	RomanceBar.set_health(Romantic,20)
 		
 	if Comfort <= 0 and com < 0:
-		time_deducted -= com/10
+		time_deducted -= com/5
 	Comfort = max(0, Comfort+com)
 	ComfortBar.set_health(Comfort,20)
 		
 	if Happiness <= 0 and hap < 0:
-		time_deducted -= hap/10	
+		time_deducted -= hap/5	
 	Happiness = max(0, Happiness+hap)
-	HappinessBar.set_health(Happiness,hap)
+	HappinessBar.set_health(Happiness,20)
 	
 	Game_end_timer.wait_time = max(Game_end_timer.time_left-time_deducted, 0.5)
 	if !Game_end_timer.is_stopped() and Game_end_timer.wait_time >= 1:
