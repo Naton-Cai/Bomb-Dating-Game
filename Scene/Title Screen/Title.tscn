@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkx02usd5s45q"]
 
-[ext_resource type="Texture2D" uid="uid://dhtweeepk6mko" path="res://Assets/Asprite Project Files (REMOVE AFTER COMPLETION)/BackgroundNoLight.png" id="1_jqeis"]
+[ext_resource type="Texture2D" uid="uid://by020cwn5kn7t" path="res://Assets/Asprite Project Files (REMOVE AFTER COMPLETION)/BackgroundNoLightBlur.png" id="1_5q2jf"]
 [ext_resource type="Texture2D" uid="uid://cmpxt6e8kmkpu" path="res://Assets/Fire Particle/Firefly_Light_03_A.png" id="2_v4d6y"]
 [ext_resource type="Theme" uid="uid://dy7wlue6gsv5v" path="res://UI/Font/font.tres" id="3_cdyyj"]
 [ext_resource type="Texture2D" uid="uid://dgxc6ai6eexvd" path="res://Assets/Asprite Project Files (REMOVE AFTER COMPLETION)/TitleScreen.png" id="4_24n7c"]
@@ -16,7 +16,7 @@ z_index = -2
 offset_right = 300.0
 offset_bottom = 200.0
 scale = Vector2(3.765, 3.765)
-texture = ExtResource("1_jqeis")
+texture = ExtResource("1_5q2jf")
 
 [node name="Light" type="PointLight2D" parent="Background"]
 position = Vector2(99.9922, 12.499)
@@ -41,10 +41,17 @@ pivot_offset = Vector2(23.055, 15.005)
 theme = ExtResource("3_cdyyj")
 text = "Start"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 offset_left = 7.05882
 offset_top = -18.2353
 offset_right = 1807.06
 offset_bottom = 1181.76
 scale = Vector2(0.62604, 0.62604)
 texture = ExtResource("4_24n7c")
+
+[node name="Light" type="PointLight2D" parent="Title"]
+position = Vector2(725.381, 292.22)
+color = Color(1, 0.431373, 0.678431, 1)
+energy = 1.3
+texture = ExtResource("2_v4d6y")
+texture_scale = 3.85

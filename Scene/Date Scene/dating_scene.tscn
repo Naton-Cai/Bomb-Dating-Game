@@ -89,12 +89,12 @@ wait_time = 60.0
 one_shot = true
 
 [node name="Fuse" parent="." instance=ExtResource("6_li2h0")]
-z_index = 9
-offset_left = 117.647
-offset_top = 28.2353
-offset_right = 1804.65
-offset_bottom = 76.2353
-scale = Vector2(0.534, 0.534)
+z_index = 2
+offset_left = 169.412
+offset_top = 597.647
+offset_right = 1856.41
+offset_bottom = 645.647
+scale = Vector2(0.5, 0.5)
 script = ExtResource("6_fhqux")
 
 [node name="update" type="Timer" parent="."]
@@ -124,21 +124,22 @@ color = Color(0.564706, 0.564706, 0.521569, 1)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="UI"]
-offset_left = 64.0
-offset_top = 256.0
-offset_right = 248.0
-offset_bottom = 320.0
-scale = Vector2(2, 2)
+offset_left = 864.0
+offset_top = 64.0
+offset_right = 1048.0
+offset_bottom = 128.0
+scale = Vector2(1.3, 1.3)
 theme = ExtResource("5_48xbn")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 6
 vertical_alignment = 1
 
 [node name="ComfortBar" type="TextureProgressBar" parent="UI"]
-offset_left = 64.0
-offset_top = 456.0
-offset_right = 422.0
-offset_bottom = 505.0
+offset_left = 1192.0
+offset_top = 448.0
+offset_right = 1550.0
+offset_bottom = 497.0
+scale = Vector2(0.6, 0.6)
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -159,10 +160,11 @@ theme_override_constants/shadow_outline_size = 6
 text = "Comfort"
 
 [node name="EngageBar" type="TextureProgressBar" parent="UI"]
-offset_left = 64.0
-offset_top = 528.0
-offset_right = 422.0
-offset_bottom = 577.0
+offset_left = 1192.0
+offset_top = 544.0
+offset_right = 1550.0
+offset_bottom = 593.0
+scale = Vector2(0.6, 0.6)
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -183,10 +185,11 @@ theme_override_constants/shadow_outline_size = 6
 text = "Engagement"
 
 [node name="RomanceBar" type="TextureProgressBar" parent="UI"]
-offset_left = 64.0
-offset_top = 600.0
-offset_right = 422.0
-offset_bottom = 649.0
+offset_left = 1176.0
+offset_top = 592.0
+offset_right = 1534.0
+offset_bottom = 641.0
+scale = Vector2(0.6, 0.6)
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -207,10 +210,11 @@ theme_override_constants/shadow_outline_size = 6
 text = "Romance"
 
 [node name="HappinessBar" type="TextureProgressBar" parent="UI"]
-offset_left = 64.0
-offset_top = 384.0
-offset_right = 422.0
-offset_bottom = 433.0
+offset_left = 1200.0
+offset_top = 496.0
+offset_right = 1558.0
+offset_bottom = 545.0
+scale = Vector2(0.6, 0.6)
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -231,10 +235,10 @@ theme_override_constants/shadow_outline_size = 6
 text = "Happiness"
 
 [node name="candle" type="TextureRect" parent="."]
-offset_left = 541.176
-offset_top = 334.118
-offset_right = 619.176
-offset_bottom = 478.119
+offset_left = 338.824
+offset_top = 296.471
+offset_right = 416.824
+offset_bottom = 440.472
 texture = ExtResource("10_h1f8n")
 
 [node name="Fire" parent="candle" instance=ExtResource("3_0r45t")]

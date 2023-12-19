@@ -21,7 +21,6 @@ texture = ExtResource("2_66re8")
 
 [node name="Light" type="PointLight2D" parent="Background"]
 position = Vector2(99.9922, 12.499)
-scale = Vector2(1, 1)
 texture = ExtResource("3_kq47y")
 
 [node name="UI" type="CanvasLayer" parent="."]

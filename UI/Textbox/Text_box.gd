@@ -26,8 +26,8 @@ func display_text(text_to_display: String):
 		custom_minimum_size.y = size.y
 	
 	#use size.x/2 to center
-	global_position.x -= 100
-	global_position.y -= size.y+20
+	global_position.x -= -150
+	global_position.y -= size.y+50
 	
 	label.text = ""
 	_display_letter()

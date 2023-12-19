@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://dy7wlue6gsv5v" path="res://UI/Font/font.tres" id="3_0gfmr"]
 
 [node name="Control" type="Node2D"]
-position = Vector2(960, 1044.28)
+position = Vector2(960, 984)
 script = ExtResource("1_44bpe")
 
 [node name="TextureRect" type="TextureRect" parent="."]
