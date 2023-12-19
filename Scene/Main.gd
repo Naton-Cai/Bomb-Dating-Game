@@ -3,6 +3,11 @@ extends Node2D
 @onready var Date = preload("res://Scene/Date Scene/dating_scene.tscn")
 @onready var End = preload("res://Scene/End Screen/end.tscn")
 @onready var EndTimer = $EndTimer
+
+@onready var sfx = preload("res://SFX/audio.tscn")
+#@onready var audio_music = preload("res://SFX/Jazz Brunch.wav")
+
+
 var Title_screen
 var Date_screen
 var End_screen
@@ -14,7 +19,7 @@ var end_score = 0
 func _ready():
 	Title_screen = Title.instantiate()
 	self.add_child(Title_screen)
-	start_button = Title_screen.get_node("Start_Game")
+	start_button = Title_screen.get_node("UI/Start_Game")
 	start_button.pressed.connect(self._on_Start_game_pressed)
 
 func _on_Start_game_pressed():
@@ -28,8 +33,14 @@ func _on_Start_game_pressed():
 	end_timer = Date_screen.get_node("Game_Fuse_Timer")
 	end_timer.timeout.connect(self._on_game_fuse__timer_timeout)
 	
+	#var music = sfx.instantiate() as AudioStreamPlayer2D
+	#var audio = audio_music
+	#music.stream = audio
+	#music.global_position = self.global_position
+	#self.add_sibling(music)	
+	
 func _on_game_fuse__timer_timeout():
-	end_score = Date_screen.round_counter
+	end_score = Date_screen.score_counter
 	#calls the end timer/ this was added to wait for a potential cutscene
 	EndTimer.start(1)
 	print(end_score)
@@ -39,6 +50,6 @@ func _on_end_timer_timeout():
 	Date_screen.queue_free()
 	End_screen = End.instantiate()
 	self.add_child(End_screen)
-	End_screen.get_node("Label").text = "Score: " + str(end_score)
-	restart_button = End_screen.get_node("Restart")
+	End_screen.get_node("UI/Score").text = "Score: " + str(end_score)
+	restart_button = End_screen.get_node("UI/Restart")
 	restart_button.pressed.connect(self._on_Start_game_pressed)
