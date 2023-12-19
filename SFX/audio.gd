@@ -7,9 +7,11 @@ func _ready():
 	print(end_timer)
 	#end_timer.timeout.connect(self._on_game_fuse__timer_timeout)
 	self.play()
+
+	
+func _physics_process(delta):
 	await self.finished
-	
-	
+	self.queue_free()
 
 #func _on_game_fuse__timer_timeout():
-	#self.queue_free()
+	#

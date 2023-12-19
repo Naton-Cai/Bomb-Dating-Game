@@ -245,7 +245,7 @@ func _on_button_3_pressed():
 	generate_reaction(response[3],2)
 	round_end_timer.start(1)
 	round_counter += 1
-	score.text = "Score: "+str(round_counter)
+	score.text = "Score: "+str(score_counter)
 
 func _on_button_4_pressed():
 	DialogManager.clear_dialog()
@@ -253,11 +253,11 @@ func _on_button_4_pressed():
 	generate_reaction(response[4],3)
 	round_end_timer.start(1)
 	round_counter += 1
-	score.text = "Score: "+str(round_counter)
+	score.text = "Score: "+str(score_counter)
 
 #the end of this timer starts the game
 func _on_start_timeout():
-	score.text = "Score: "+str(round_counter)
+	score.text = "Score: "+str(score_counter)
 	generate_personality()
 	dialog_ui = DialogManager._spawn_dialog_box()
 	generate_round()
