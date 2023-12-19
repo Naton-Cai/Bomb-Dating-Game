@@ -156,15 +156,15 @@ func generate_reaction(r: String, answered: int):
 		
 		print(total_points)
 		if total_points >= 0 and total_points <= 10:
-			reaction = ["I like that"]
+			reaction = ["Ohh okay <3"]
 		elif total_points < 0 and total_points >= -10:
-			reaction =["I don't like that"]
+			reaction =["Uhhh okay?"]
 		elif total_points > 10:
-			reaction = ["I love that"]
+			reaction = ["OMG I loveee thhaat"]
 		elif total_points < -10:
-			reaction = ["I hate that"]
+			reaction = ["Ewww"]
 		else:
-			reaction = ["EMPTY"]
+			reaction = ["Huh?"]
 	#calls the TextManager to display the textbox aboxe the bomb
 	TextManager.start_text(Bomb.global_position, reaction)
 	
