@@ -50,6 +50,6 @@ func _on_end_timer_timeout():
 	Date_screen.queue_free()
 	End_screen = End.instantiate()
 	self.add_child(End_screen)
-	End_screen.get_node("Label").text = "Score: " + str(end_score)
-	restart_button = End_screen.get_node("Restart")
+	End_screen.get_node("UI/Score").text = "Score: " + str(end_score)
+	restart_button = End_screen.get_node("UI/Restart")
 	restart_button.pressed.connect(self._on_Start_game_pressed)
