@@ -108,7 +108,6 @@ texture = ExtResource("7_bw138")
 
 [node name="Light" type="PointLight2D" parent="Background"]
 position = Vector2(99.9922, 12.499)
-scale = Vector2(1, 1)
 texture = ExtResource("9_krnnp")
 
 [node name="Table" type="TextureRect" parent="."]
@@ -145,7 +144,7 @@ value = 100.0
 texture_under = ExtResource("9_47hvg")
 texture_progress = ExtResource("10_lheu7")
 texture_progress_offset = Vector2(2, 2)
-tint_progress = Color(1, 0, 0, 1)
+tint_progress = Color(0.858824, 0.305882, 0.501961, 1)
 script = ExtResource("12_qascy")
 
 [node name="Label" type="Label" parent="UI/ComfortBar"]
@@ -169,7 +168,7 @@ value = 100.0
 texture_under = ExtResource("9_47hvg")
 texture_progress = ExtResource("10_lheu7")
 texture_progress_offset = Vector2(2, 2)
-tint_progress = Color(1, 0, 0, 1)
+tint_progress = Color(0.858824, 0.305882, 0.501961, 1)
 script = ExtResource("12_qascy")
 
 [node name="Label" type="Label" parent="UI/EngageBar"]
@@ -193,7 +192,7 @@ value = 100.0
 texture_under = ExtResource("9_47hvg")
 texture_progress = ExtResource("10_lheu7")
 texture_progress_offset = Vector2(2, 2)
-tint_progress = Color(1, 0, 0, 1)
+tint_progress = Color(0.858824, 0.305882, 0.501961, 1)
 script = ExtResource("12_qascy")
 
 [node name="Label" type="Label" parent="UI/RomanceBar"]
@@ -217,7 +216,7 @@ value = 100.0
 texture_under = ExtResource("9_47hvg")
 texture_progress = ExtResource("10_lheu7")
 texture_progress_offset = Vector2(2, 2)
-tint_progress = Color(1, 0, 0, 1)
+tint_progress = Color(0.858824, 0.305882, 0.501961, 1)
 script = ExtResource("12_qascy")
 
 [node name="Label" type="Label" parent="UI/HappinessBar"]
