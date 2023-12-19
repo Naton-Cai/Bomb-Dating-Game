@@ -27,7 +27,6 @@ func _on_Start_game_pressed():
 	self.add_child(Date_screen)
 	end_timer = Date_screen.get_node("Game_Fuse_Timer")
 	end_timer.timeout.connect(self._on_game_fuse__timer_timeout)
-	print("pressed")
 	
 func _on_game_fuse__timer_timeout():
 	end_score = Date_screen.round_counter

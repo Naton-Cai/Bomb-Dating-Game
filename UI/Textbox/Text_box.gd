@@ -8,9 +8,9 @@ const MAX_WIDTH = 500
 var text = ""
 var letter_index = 0
 
-var letter_time = 0.03
-var space_time = 0.06
-var punctuation_time = 0.2
+var letter_time = 0.01
+var space_time = 0.01
+var punctuation_time = 0.01
 
 signal finished_displaying()
 
@@ -26,7 +26,7 @@ func display_text(text_to_display: String):
 		custom_minimum_size.y = size.y
 	
 	#use size.x/2 to center
-	global_position.x -= -50
+	global_position.x -= 100
 	global_position.y -= size.y+20
 	
 	label.text = ""
