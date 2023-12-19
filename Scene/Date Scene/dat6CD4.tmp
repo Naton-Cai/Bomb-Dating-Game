@@ -31,8 +31,6 @@ script/source = "extends Node2D
 @onready var text_json = JSON.parse_string(FileAccess.get_file_as_string(\"res://UI/Dialog/questions.json\"))
 
 var current_question_num = null
-var response_values: Array[int] = [0,0,0,0]
-
 var response: Array[String] = []
 var question: Array[String] = []
 var reaction: Array[String] = []
@@ -57,18 +55,12 @@ var Happiness = 100
 var round_counter = 0
 var game_time = 60
 
-func generate_negative_positive(x: int):
-	if(bool(randi() % 2)):
-		return x
-	else:
-		return x*-1
-
 #personality will be randomly determined from -100 to 100
 func generate_personality():
-	Active_Passive = generate_negative_positive(10)
-	Emotional_Logical = generate_negative_positive(10)
-	Extroverted_Introverted = generate_negative_positive(10)
-	Postive_Negative = generate_negative_positive(10)
+	Active_Passive = randi_range( -100, 100)
+	Emotional_Logical = randi_range( -100, 100)
+	Extroverted_Introverted = randi_range( -100, 100)
+	Postive_Negative = randi_range( -100, 100)
 
 #generates the questions
 func generate_question():
@@ -90,14 +82,10 @@ func generate_response(q:String):
 	if round_counter%4 == 0 and round_counter != 0 or current_question_num == -1:
 		response = [
 		\"What would you like to ask?\",
-		\"Are you more positive or negative
-		[Happiness]\",
-		\"Are introverted or extroverted
-		[Comfort]\",
-		\"Are you an active or passive person
-		[Engagment]\",
-		\"Do you think more emotionally or logically
-		[Romance]\",
+		\"Option 1\",
+		\"Option 2\",
+		\"Option 3\",
+		\"Option 4\",
 		]
 	else:
 		#gets 4 random rensponses with no duplicates
@@ -105,9 +93,9 @@ func generate_response(q:String):
 		var list = text_json[current_question_num][\"answers\"].duplicate() 
 		for i in range(4):
 			var x = randi()%list.size()
-			response_values[i] = x
 			response_text.append(list[x][\"response\"])
 			list.remove_at(x)
+		print(text_json[current_question_num][\"answers\"])
 		response = [
 		\"What would you like to say?\",
 		response_text[0],
@@ -118,49 +106,8 @@ func generate_response(q:String):
 
 
 func generate_reaction(r: String, answered: int):
-	if round_counter%4 == 0 and round_counter != 0:
-		match(answered):
-			0:
-				if Postive_Negative > 0:
-					reaction = [\"I'm quite a positive person.\"]
-				else:
-					reaction = [\"No, I'm quite negative about things.\"]
-			1:
-				if Extroverted_Introverted > 0:
-					reaction = [\"I'm quite extroverted.\"]
-				else:
-					reaction = [\"I'd say I'm introverted.\"]
-			2:
-				if Active_Passive > 0:
-					reaction = [\"I'm very active\"]
-				else:
-					reaction = [\"Eh, I'm a passive person\"]
-			3:
-				if Emotional_Logical > 0:
-					reaction = [\"I'm a very emotional person\"]
-				else:
-					reaction = [\"I think rather logically\"]
-			_:
-				reaction = [\"ERROR\"]
-			
-	else:
-		var ap = text_json[current_question_num][\"answers\"][response_values[answered]][\"weight\"][0]*Active_Passive
-		var el = text_json[current_question_num][\"answers\"][response_values[answered]][\"weight\"][1]*Emotional_Logical
-		var ei = text_json[current_question_num][\"answers\"][response_values[answered]][\"weight\"][2]*Extroverted_Introverted
-		var pn = text_json[current_question_num][\"answers\"][response_values[answered]][\"weight\"][3]*Postive_Negative
-		var total_points = ap+el+ei+pn+8
-		calculate_drain(ap+2,el+2,ei+2,pn+2)
-		print(total_points)
-		if total_points >= 0 and total_points <= 10:
-			reaction = [\"I like that\"]
-		elif total_points < 0 and total_points >= -10:
-			reaction =[\"I don't like that\"]
-		elif total_points > 10:
-			reaction = [\"I love that\"]
-		elif total_points < -10:
-			reaction = [\"I hate that\"]
-		else:
-			reaction = [\"EMPTY\"]
+	var array = [\"I like that\", \"I don't like that\", \"I love that\", \"I hate that\"]
+	reaction = [str(array[answered])]
 	#calls the TextManager to display the textbox aboxe the bomb
 	TextManager.start_text(Bomb.global_position, reaction)
 	
@@ -191,29 +138,29 @@ func generate_round():
 
 
 #calcuates the drain effect on each emotional bar
-func calculate_drain(eng, rom, com, hap):
+func calculate_drain():
 	var time_deducted = 0
-	if Engagement <= 0 and eng < 0:
-		time_deducted -= eng/10
-	Engagement = max(0, Engagement+eng)
-	EngageBar.set_health(Engagement,20)
-		
-	if Romantic <= 0 and rom < 0:	
-		time_deducted -= rom/10
-	Romantic = max(0, Romantic+rom)
-	RomanceBar.set_health(Romantic,20)
-		
-	if Comfort <= 0 and com < 0:
-		time_deducted -= com/10
-	Comfort = max(0, Comfort+com)
-	ComfortBar.set_health(Comfort,20)
-		
-	if Happiness <= 0 and hap < 0:
-		time_deducted -= hap/10	
-	Happiness = max(0, Happiness+hap)
-	HappinessBar.set_health(Happiness,hap)
-	
-	Game_end_timer.wait_time = max(Game_end_timer.time_left-time_deducted, 0.5)
+	if Engagement > 0:
+		Engagement = max(0, Engagement-10)
+		EngageBar.set_health(Engagement,20)
+	else:
+		time_deducted += 1
+	if Romantic > 0:	
+		Romantic = max(0, Romantic-10)
+		RomanceBar.set_health(Romantic,20)
+	else:
+		time_deducted += 1
+	if Comfort > 0:	
+		Comfort = max(0, Comfort-10)
+		ComfortBar.set_health(Comfort,20)
+	else:
+		time_deducted += 1
+	if Happiness > 0:	
+		Happiness = max(0, Happiness-10)
+		HappinessBar.set_health(Happiness,20)
+	else:
+		time_deducted += 1
+	Game_end_timer.wait_time = max(Game_end_timer.time_left-time_deducted, 1)
 	if !Game_end_timer.is_stopped() and Game_end_timer.wait_time >= 1:
 		Game_end_timer.start()
 
@@ -277,10 +224,10 @@ func _on_game_fuse__timer_timeout():
 
 #calls an update once ever 1 second
 func _on_update_timeout():
-	calculate_drain(-5,-5,-5,-5)
+	calculate_drain()
 	fuse_health.set_health(Game_end_timer.time_left,20)
 	game_time = Game_end_timer.time_left
-	#print(Engagement, Romantic, Comfort, Happiness)
+	print(Engagement, Romantic, Comfort, Happiness)
 "
 
 [sub_resource type="Gradient" id="Gradient_uhf2u"]
@@ -387,9 +334,9 @@ color = Color(0.564706, 0.564706, 0.521569, 1)
 
 [node name="Score" type="Label" parent="UI"]
 offset_left = 64.0
-offset_top = 256.0
+offset_top = 520.0
 offset_right = 248.0
-offset_bottom = 320.0
+offset_bottom = 584.0
 scale = Vector2(2, 2)
 theme = ExtResource("5_48xbn")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -398,9 +345,9 @@ vertical_alignment = 1
 
 [node name="ComfortBar" type="TextureProgressBar" parent="UI"]
 offset_left = 64.0
-offset_top = 456.0
-offset_right = 422.0
-offset_bottom = 505.0
+offset_top = 704.0
+offset_right = 418.0
+offset_bottom = 749.0
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -422,9 +369,9 @@ text = "Comfort"
 
 [node name="EngageBar" type="TextureProgressBar" parent="UI"]
 offset_left = 64.0
-offset_top = 528.0
+offset_top = 784.0
 offset_right = 422.0
-offset_bottom = 577.0
+offset_bottom = 833.0
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -446,9 +393,9 @@ text = "Engagement"
 
 [node name="RomanceBar" type="TextureProgressBar" parent="UI"]
 offset_left = 64.0
-offset_top = 600.0
+offset_top = 864.0
 offset_right = 422.0
-offset_bottom = 649.0
+offset_bottom = 913.0
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -470,9 +417,9 @@ text = "Romance"
 
 [node name="HappinessBar" type="TextureProgressBar" parent="UI"]
 offset_left = 64.0
-offset_top = 384.0
+offset_top = 624.0
 offset_right = 422.0
-offset_bottom = 433.0
+offset_bottom = 673.0
 theme = ExtResource("5_48xbn")
 value = 100.0
 texture_under = ExtResource("9_47hvg")
@@ -493,14 +440,14 @@ theme_override_constants/shadow_outline_size = 6
 text = "Happiness"
 
 [node name="candle" type="TextureRect" parent="."]
-offset_left = 541.176
-offset_top = 334.118
-offset_right = 619.176
-offset_bottom = 478.119
+offset_left = 536.471
+offset_top = 381.176
+offset_right = 614.471
+offset_bottom = 525.177
 texture = ExtResource("10_h1f8n")
 
 [node name="Fire" parent="candle" instance=ExtResource("3_0r45t")]
-z_index = 0
+z_index = 1
 position = Vector2(37.6471, 37.647)
 scale = Vector2(0.49, 0.49)
 amount = 10
