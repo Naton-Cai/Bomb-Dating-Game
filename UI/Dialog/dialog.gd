@@ -5,6 +5,8 @@ extends Node2D
 @onready var button3 = $TextureRect/Entry1/VBoxContainer/Button3
 @onready var button4 = $TextureRect/Entry1/VBoxContainer/Button4
 @onready var timer = $DisplayTimer
+@onready var sfx = preload("res://SFX/audio.tscn")
+@onready var audio_click = preload("res://SFX/Clicking.wav")
 
 var text = ""
 var letter_index = 0
@@ -75,16 +77,32 @@ func _on_display_timer_timeout():
 	_display_letter()
 
 func _on_button_1_pressed():
+	var sound = sfx.instantiate() as AudioStreamPlayer2D
+	sound.stream = audio_click
+	sound.global_position = self.global_position
+	self.add_sibling(sound)
 	disable_buttons()
 
 
 func _on_button_2_pressed():
+	var sound = sfx.instantiate() as AudioStreamPlayer2D
+	sound.stream = audio_click
+	sound.global_position = self.global_position
+	self.add_sibling(sound)
 	disable_buttons()
 
 
 func _on_button_3_pressed():
+	var sound = sfx.instantiate() as AudioStreamPlayer2D
+	sound.stream = audio_click
+	sound.global_position = self.global_position
+	self.add_sibling(sound)
 	disable_buttons()
 
 
 func _on_button_4_pressed():
+	var sound = sfx.instantiate() as AudioStreamPlayer2D
+	sound.stream = audio_click
+	sound.global_position = self.global_position
+	self.add_sibling(sound)
 	disable_buttons()
