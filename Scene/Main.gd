@@ -2,6 +2,7 @@ extends Node2D
 @onready var Title = preload("res://Scene/Title Screen/Title.tscn")
 @onready var Date = preload("res://Scene/Date Scene/dating_scene.tscn")
 @onready var End = preload("res://Scene/End Screen/end.tscn")
+@onready var GoodEnd = preload("res://Scene/End Screen/GoodEnding.tscn")
 @onready var EndTimer = $EndTimer
 
 @onready var sfx = preload("res://SFX/audio.tscn")
@@ -11,6 +12,7 @@ extends Node2D
 var Title_screen
 var Date_screen
 var End_screen
+var Good_screen
 var start_button
 var restart_button
 var end_timer
@@ -48,8 +50,12 @@ func _on_game_fuse__timer_timeout():
 func _on_end_timer_timeout():
 	#print("Freeing")
 	Date_screen.queue_free()
-	End_screen = End.instantiate()
-	self.add_child(End_screen)
-	End_screen.get_node("UI/Score").text = "Score: " + str(end_score)
-	restart_button = End_screen.get_node("UI/Restart")
-	restart_button.pressed.connect(self._on_Start_game_pressed)
+	if end_score >= 200:
+		Good_screen = GoodEnd.instantiate()
+		self.add_child(Good_screen)
+	else:
+		End_screen = End.instantiate()
+		self.add_child(End_screen)
+		End_screen.get_node("UI/Score").text = "Score: " + str(end_score)
+		restart_button = End_screen.get_node("UI/Restart")
+		restart_button.pressed.connect(self._on_Start_game_pressed)
