@@ -11,7 +11,7 @@ extends Node2D
 var text = ""
 var letter_index = 0
 var max_length = 0
-var letter_time = 0.01
+var letter_time = 0.0005
 var isEmpty = true
 
 signal finished_displaying()
@@ -56,20 +56,12 @@ func display_dialog(text_to_display: Array[String]):
 	
 #function that displays each string letter by letter
 func _display_letter():
-	if letter_index >= max_length or len(text) < 5:
-		return
-	if letter_index < text[0].length():
-		headerlabel.text += text[0][letter_index]
-	if letter_index < text[1].length():
-		button1.text += text[1][letter_index]
-	if letter_index < text[2].length():
-		button2.text += text[2][letter_index]
-	if letter_index < text[3].length():
-		button3.text += text[3][letter_index]
-	if letter_index < text[4].length():
-		button4.text += text[4][letter_index]
-	timer.start(letter_time)
-	letter_index+=1
+	headerlabel.text += text[0]
+	button1.text += text[1]
+	button2.text += text[2]
+	button3.text += text[3]
+	button4.text += text[4]
+	#timer.start(letter_time)
 	
 	
 

@@ -226,7 +226,7 @@ func _on_button_1_pressed():
 	DialogManager.clear_dialog()
 	TextManager.clear_text()
 	generate_reaction(response[1],0)
-	round_end_timer.start(1)
+	round_end_timer.start(0.5)
 	round_counter += 1
 	score.text = "Score: "+str(score_counter)
 
@@ -235,7 +235,7 @@ func _on_button_2_pressed():
 	DialogManager.clear_dialog()
 	TextManager.clear_text()
 	generate_reaction(response[2],1)
-	round_end_timer.start(1)
+	round_end_timer.start(0.5)
 	round_counter += 1
 	score.text = "Score: "+str(score_counter)
 
@@ -243,7 +243,7 @@ func _on_button_3_pressed():
 	DialogManager.clear_dialog()
 	TextManager.clear_text()
 	generate_reaction(response[3],2)
-	round_end_timer.start(1)
+	round_end_timer.start(0.5)
 	round_counter += 1
 	score.text = "Score: "+str(score_counter)
 
@@ -251,7 +251,7 @@ func _on_button_4_pressed():
 	DialogManager.clear_dialog()
 	TextManager.clear_text()
 	generate_reaction(response[4],3)
-	round_end_timer.start(1)
+	round_end_timer.start(0.5)
 	round_counter += 1
 	score.text = "Score: "+str(score_counter)
 

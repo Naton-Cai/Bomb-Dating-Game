@@ -10,7 +10,7 @@ var letter_index = 0
 
 var letter_time = 0.01
 var space_time = 0.01
-var punctuation_time = 0.01
+var punctuation_time = 0.0005
 
 signal finished_displaying()
 
