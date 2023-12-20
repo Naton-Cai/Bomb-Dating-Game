@@ -41,3 +41,5 @@ offset_bottom = 640.72
 scale = Vector2(2, 2)
 theme = ExtResource("4_uk0w0")
 text = "Restart"
+
+[connection signal="button_down" from="UI/Restart" to="." method="_on_restart_button_down"]
