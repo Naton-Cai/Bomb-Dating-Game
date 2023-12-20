@@ -144,10 +144,10 @@ func generate_reaction(r: String, answered: int):
 		var el = text_json[current_question_num]["answers"][response_values[answered]]["weight"][1]*Emotional_Logical
 		var ei = text_json[current_question_num]["answers"][response_values[answered]]["weight"][2]*Extroverted_Introverted
 		var pn = text_json[current_question_num]["answers"][response_values[answered]]["weight"][3]*Postive_Negative
-		var total_points = ap+el+ei+pn+8
+		var total_points = ap+el+ei+pn+4
 		
 		score_counter += max(0, total_points)
-		calculate_drain(ap+2,el+2,ei+2,pn+2)
+		calculate_drain(ap+1,el+1,ei+1,pn+1)
 		"""
 		print(ap," ", Active_Passive," ",)
 		print(el, " ", Emotional_Logical," ",)
@@ -157,7 +157,7 @@ func generate_reaction(r: String, answered: int):
 		"""
 		
 		
-		print(total_points)
+		#print(total_points)
 		if total_points >= 0 and total_points <= 10:
 			reaction = ["Oh okay vibe."]
 		elif total_points < 0 and total_points >= -10:
@@ -202,23 +202,23 @@ func calculate_drain(eng, rom, com, hap):
 	var time_deducted = 0
 	if Engagement <= 0 and eng < 0:
 		time_deducted -= eng/5
+	EngageBar.set_health(Engagement, Engagement-max(0, Engagement+eng))
 	Engagement = max(0, Engagement+eng)
-	EngageBar.set_health(Engagement,20)
 		
 	if Romantic <= 0 and rom < 0:	
 		time_deducted -= rom/5
+	RomanceBar.set_health(Romantic,Romantic-max(0, Romantic+rom))
 	Romantic = max(0, Romantic+rom)
-	RomanceBar.set_health(Romantic,20)
 		
 	if Comfort <= 0 and com < 0:
 		time_deducted -= com/5
+	ComfortBar.set_health(Comfort, Comfort-max(0, Comfort+com))
 	Comfort = max(0, Comfort+com)
-	ComfortBar.set_health(Comfort,20)
 		
 	if Happiness <= 0 and hap < 0:
 		time_deducted -= hap/5	
+	HappinessBar.set_health(Happiness,Happiness-max(0, Happiness+hap))
 	Happiness = max(0, Happiness+hap)
-	HappinessBar.set_health(Happiness,20)
 	
 	Game_end_timer.wait_time = max(Game_end_timer.time_left-time_deducted, 0.5)
 	if !Game_end_timer.is_stopped() and Game_end_timer.wait_time >= 1:
