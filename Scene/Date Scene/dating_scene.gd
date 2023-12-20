@@ -115,7 +115,7 @@ func generate_reaction(r: String, answered: int):
 		match(answered):
 			0:
 				if Postive_Negative > 0:
-					reaction = ["I'm quite a positive person."]
+					reaction = ["No likee, I'm soo positive omg."]
 				else:
 					reaction = ["No, I'm quite negative about things."]
 			1:
@@ -130,9 +130,9 @@ func generate_reaction(r: String, answered: int):
 					reaction = ["Eh, I'm a passive person"]
 			3:
 				if Emotional_Logical > 0:
-					reaction = ["I'm a very emotional person"]
+					reaction = ["I'm very emotional"]
 				else:
-					reaction = ["I think rather logically"]
+					reaction = ["I'm sooo logical"]
 			_:
 				reaction = ["ERROR"]
 			
@@ -156,7 +156,7 @@ func generate_reaction(r: String, answered: int):
 		
 		print(total_points)
 		if total_points >= 0 and total_points <= 10:
-			reaction = ["Ohh okay <3"]
+			reaction = ["Oh okay vibe."]
 		elif total_points < 0 and total_points >= -10:
 			reaction =["Uhhh okay?"]
 		elif total_points > 10:
