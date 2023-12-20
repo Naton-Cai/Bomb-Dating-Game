@@ -12,6 +12,8 @@ extends Node2D
 @onready var HappinessBar = $UI/HappinessBar
 @onready var text_json = JSON.parse_string(FileAccess.get_file_as_string("res://UI/Dialog/questions.json"))
 
+@onready var animation = $Bomb/AnimationPlayer
+
 var current_question_num = null
 var response_values: Array[int] = [-1,-1,-1,-1]
 
@@ -110,6 +112,7 @@ func generate_response(q:String):
 
 
 func generate_reaction(r: String, answered: int):
+	animation.play("Talking")
 	if round_counter%4 == 0 and round_counter != 0:
 		score_counter += 10
 		match(answered):
