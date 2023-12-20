@@ -70,8 +70,9 @@ offset_left = 424.0
 offset_top = 232.0
 offset_right = 1576.0
 offset_bottom = 880.0
-scale = Vector2(1.67, 1.67)
+scale = Vector2(1.61576, 1.44693)
 theme = ExtResource("4_gw4mo")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 
