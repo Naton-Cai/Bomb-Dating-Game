@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://xicfsmgcx4mg"]
+[gd_scene load_steps=20 format=3 uid="uid://xicfsmgcx4mg"]
 
+[ext_resource type="Script" path="res://Scene/End Screen/Transition.gd" id="1_483rp"]
 [ext_resource type="Texture2D" uid="uid://dtrkbbq8jsu4i" path="res://Assets/BaseBomb-BlinkClosedLipsNOFuseHeartEyesSheet.png" id="1_qqapx"]
 [ext_resource type="Script" path="res://Scene/End Screen/FuseBomb.gd" id="2_3bej0"]
 [ext_resource type="Texture2D" uid="uid://dhtweeepk6mko" path="res://Assets/Asprite Project Files (REMOVE AFTER COMPLETION)/BackgroundNoLight.png" id="3_qmuvc"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dx3ggku2qio5p" path="res://Assets/Table.png" id="5_mw3ya"]
 [ext_resource type="Texture2D" uid="uid://sukrpu8xl3l7" path="res://Assets/candle.png" id="7_bmu4a"]
 [ext_resource type="PackedScene" uid="uid://qyot1mmfd7bu" path="res://Assets/Fire Particle/fire.tscn" id="8_e184c"]
+[ext_resource type="Script" path="res://Scene/End Screen/ColorRect.gd" id="9_xgdel"]
 
 [sub_resource type="Animation" id="Animation_2bnbf"]
 length = 0.001
@@ -71,17 +73,39 @@ color_ramp = SubResource("GradientTexture1D_a0832")
 turbulence_enabled = true
 turbulence_noise_scale = 8.526
 
+[sub_resource type="Animation" id="Animation_woef8"]
+resource_name = "fade_in"
+length = 5.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yx0b"]
+_data = {
+"fade_in": SubResource("Animation_woef8")
+}
+
 [node name="Node2D" type="Node2D"]
-z_index = 1
 scale = Vector2(1.7, 1.7)
+script = ExtResource("1_483rp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="FuseBomb" type="Sprite2D" parent="."]
-position = Vector2(575, 272)
-scale = Vector2(2.876, 2.959)
+position = Vector2(576.471, 270)
+scale = Vector2(2.876, 2.876)
 texture = ExtResource("1_qqapx")
 hframes = 9
 script = ExtResource("2_3bej0")
@@ -126,5 +150,20 @@ position = Vector2(37.6471, 37.647)
 scale = Vector2(0.49, 0.49)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_5xndt")
+
+[node name="UI" type="CanvasLayer" parent="."]
+scale = Vector2(48.55, 48.55)
+transform = Transform2D(48.55, 0, 0, 48.55, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_xgdel")
+
+[node name="Fade" type="AnimationPlayer" parent="UI/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_8yx0b")
+}
 
 [connection signal="animation_finished" from="FuseBomb/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm8e2kpqu4m7g"]
+
+[sub_resource type="GDScript" id="GDScript_vxkqw"]
+script/source = "extends Node2D
+@onready var fade = $Fade
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	fade.play(\"fade_in\")
+	#pass # Replace with function body.
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_fade_animation_finished(anim_name):
+	if anim_name == \"fade_in\":
+		fade.play(\"fade_Out\")
+"
+
+[sub_resource type="Animation" id="Animation_woef8"]
+resource_name = "fade_in"
+length = 3.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o6wvw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jamwk"]
+resource_name = "fade_Out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yx0b"]
+_data = {
+"RESET": SubResource("Animation_o6wvw"),
+"fade_Out": SubResource("Animation_jamwk"),
+"fade_in": SubResource("Animation_woef8")
+}
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_vxkqw")
+
+[node name="UI" type="CanvasLayer" parent="."]
+scale = Vector2(48.55, 48.55)
+transform = Transform2D(48.55, 0, 0, 48.55, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+
+[node name="Fade" type="AnimationPlayer" parent="."]
+root_node = NodePath("../UI/ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_8yx0b")
+}
+
+[connection signal="animation_finished" from="Fade" to="." method="_on_fade_animation_finished"]
